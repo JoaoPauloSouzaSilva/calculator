@@ -7,7 +7,7 @@ text_result.innerHtml = '';
 
 function btn_AC (){
   array.length = 0;
-  txt_result.innerHTML = '';
+  txt_num.innerHTML = '';
 };
 
 var parenteseIs = true;
@@ -125,17 +125,22 @@ function btn_igual(){
     } else{
         ArryaNum.push(Number(num));
         num = '';
-      if(caracter != '='){
         ArryaNum.push(caracter);
-      };
     };
   });
-  //terminar of forEach
+  array.length = 0;
+  let PrevNum;
+  ArryaNum.forEach(function(value) {
+    if(typeof value === 'string'){
+        var index = value.indexOf;
+
+    };
+  });
 };  
 
 function percorreArray(){
-    txt_result.innerHTML = '';
+    txt_num.innerHTML = '';
     array.forEach(function(caracter){
-      txt_result.innerHTML += caracter;
+      txt_num.innerHTML += caracter;
     });
 };

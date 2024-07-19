@@ -1,7 +1,7 @@
-body{
-  padding: 0%;
-  margin: 0%;
-  width: 100vw;
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
   height: 100vh;
   background-color: #ccc9c9;
   backdrop-filter: blur(20px);
@@ -11,92 +11,91 @@ body{
   font-family: Arial, Helvetica, sans-serif;
 }
 
-#container{
-  width: 25%;
-  height: 90%;
+#container {
+  width: 26%;
+  height: auto;
   background-color: #000;
   display: flex;
-  align-items: center;
   flex-direction: column;
+  align-items: center;
   border-radius: 40px;
-  padding: 1.4% 0%;
+  padding: 1.4% 0;
 }
 
-  main{
-    width: 90%;
-    height: 30%;
-    display: flex;
-    flex-direction: column;
-    padding-right: 13%;
-  }
+ #main {
+  width: 80%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  padding-right: 4%;
+} 
 
-  #count{
-    width: 100%;
-    height: 60%;
-    display: flex;
-    justify-content: right;
-    align-items: end;
-    color: #e8e8e8;
-    font-size: 300%; /* colocar para mudar o tamanho */
-  }
+#count{
+  width: 100%;
+  height: 14vh;
+  display: flex;
+  justify-content: right;
+  align-items: end;
+  color: #e8e8e8;
+  font-size: 3em; /* Use em for better scalability */
+}
 
-  #result{
-    width: 100%;
-    height: 40%;
-    display: flex;
-    justify-content: right;
-    align-items: end;
-    color: #e8e8e8;
-    font-size: 300%; /* colocar para mudar o tamanho */
-  }
+#result{
+  width: 100%;
+  height: 12vh;
+  display: flex;
+  justify-content: right;
+  align-items: end;
+  color: #e8e8e8;
+  font-size: 3em; /* Use em for better scalability */
+}
 
-  section{
-    width: 90%;
-    height: 70%;
-    margin-top: 5%;
-  }
+section {
+  width: 93%;
+  height: 70%;
+  margin-top: 5%;
+}
 
-  .layer{
-    width: 100%;
-    height: auto;
-    margin-bottom: 4%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-  }
+.layer {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: row;
+  margin-bottom: 4%;
+}
 
-  button{
-    width: 28%;
-    height: 72px;
-    border-radius: 100%;
-    margin: 0% 2%;
-    cursor: pointer;
-    background-color: #333;
-    border: solid 1px #333;
-    color: #e8e8e8;
-    font-size: xx-large;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-  }
+button {
+  width: 28%;
+  height: 10vh;
+  border-radius: 100%;
+  margin: 0 2%;
+  cursor: pointer;
+  background-color: #333;
+  border: solid 1px #333;
+  color: #e8e8e8;
+  font-size: xx-large;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
 
-  #special-button{
-    width: 65%;
-    border-radius: 70px;
-    display: flex;
-    justify-content: flex-start;
-    text-align: left;
-    padding-left: 7%;
-  }
+#special-button {
+  width: 65%;
+  border-radius: 70px;
+  display: flex;
+  justify-content: flex-start;
+  text-align: left;
+  padding-left: 7%;
+}
 
-  .action-right{
-    background-color: #ff9f0a;
-    color: #fffef2;
-    font-size: 260%;
-  }
+.action-right {
+  background-color: #ff9f0a;
+  color: #fffef2;
+  font-size: 2.6em; /* Use em for better scalability */
+}
 
-  .action-top{
-    background-color: #a5a5a5;
-    color: #141414;
-  }
+.action-top {
+  background-color: #a5a5a5;
+  color: #141414;
+}
