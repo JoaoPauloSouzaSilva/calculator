@@ -9,39 +9,39 @@
 <body>
   <div id="container">
     <main>
-      <div id="count">1+1</div>
-      <div id="result">2</div>
+      <div id="count"></div>
+      <div id="result"></div>
     </main>
     <section>
       <div class="layer">
-        <button class="action-top">AC</button>
-        <button class="action-top">( )</button>
-        <button class="action-top">%</button>
-        <button class="action-right">÷</button>
+        <button class="action-top" onclick="btn_AC()">AC</button>
+        <button class="action-top" onclick="btn_parentesis()">( )</button>
+        <button class="action-top" onclick="btn_porcentagem()">%</button>
+        <button class="action-right" onclick="btn_divisao()">÷</button>
       </div>
       <div class="layer">
-        <button>7</button>
-        <button>8</button>
-        <button>9</button>
-        <button class="action-right">x</button>
+        <button onclick="btn_7()">7</button>
+        <button onclick="btn_8()">8</button>
+        <button onclick="btn_9()">9</button>
+        <button class="action-right" onclick="btn_multiplicacao()">x</button>
       </div>
       <div class="layer">
-        <button>4</button>
-        <button>5</button>
-        <button>6</button>
-        <button class="action-right">-</button>
+        <button onclick="btn_4()">4</button>
+        <button onclick="btn_5()">5</button>
+        <button onclick="btn_6()">6</button>
+        <button class="action-right" onclick="btn_subtracao()">-</button>
       </div>
       <div class="layer">
-        <button>1</button>
-        <button>2</button>
-        <button>3</button>
-        <button class="action-right">+</button>
+        <button onclick="btn_1()">1</button>
+        <button onclick="btn_2()">2</button>
+        <button onclick="btn_3()">3</button>
+        <button class="action-right" onclick="btn_soma()">+</button>
       </div>
       <div class="layer">
-        <button id="special-button">0</button>
-  
-        <button>,</button>
-        <button class="action-right">=</button>
+        <button id="special-button" onclick="btn_0()">0</button>
+
+        <button onclick="btn_virgula()">,</button>
+        <button class="action-right" onclick="btn_igual()">=</button>
       </div>
     </section>
   </div>
