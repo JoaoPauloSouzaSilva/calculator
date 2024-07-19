@@ -2,12 +2,13 @@ var count;
 var array = [];
 var txt_num = document.getElementById('count');
 var txt_result = document.getElementById('result');
-txt_num.innerHtml = '';
-text_result.innerHtml = '';
 
 function btn_AC (){
   array.length = 0;
+  ArraySoma.length = 0;
+  ArryaNum.length = 0;
   txt_num.innerHTML = '';
+  txt_result.innerHTML = '';
 };
 
 var parenteseIs = true;
@@ -115,28 +116,52 @@ function btn_9 (){
   percorreArray();
 };
 
-var num; 
+var num = ''; 
 var ArryaNum = [];
 
 function btn_igual(){
+  array.push('=');
   array.forEach(function(caracter){
     if(typeof caracter === 'number'){
-        num += caracter.toString();       
+      if (num == '') {
+        num = caracter.toString();
+      }else{
+        num += caracter.toString();
+      };       
     } else{
         ArryaNum.push(Number(num));
         num = '';
         ArryaNum.push(caracter);
     };
   });
+
   array.length = 0;
-  let PrevNum;
+
+  console.log(ArryaNum);
   ArryaNum.forEach(function(value) {
     if(typeof value === 'string'){
-        var index = value.indexOf;
-
+      if (value != '=') {        
+        var i = ArryaNum.indexOf(value);
+        ArraySoma.push(Number(ArryaNum[i - 1]));
+        ArraySoma.push(Number(ArryaNum[i + 1]));
+      };
     };
   });
-};  
+
+  ArryaNum.length = 0;
+  Soma();
+
+}; 
+
+var ArraySoma = [];
+function Soma() {
+  var counter = 0;
+  for (let i = 0; i < ArraySoma.length; i++) {
+    counter += ArraySoma[i];
+  };
+  txt_result.innerHTML = counter;
+  ArraySoma.length = 0;
+};
 
 function percorreArray(){
     txt_num.innerHTML = '';
