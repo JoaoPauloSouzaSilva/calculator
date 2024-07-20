@@ -139,12 +139,11 @@ function btn_igual(){
 
   console.log(ArryaNum);
   ArryaNum.forEach(function(value) {
-    if(typeof value === 'string'){
-      if (value != '=') {        
+    if(typeof value === 'string'){  
         var i = ArryaNum.indexOf(value);
-        ArraySoma.push(Number(ArryaNum[i - 1]));
-        ArraySoma.push(Number(ArryaNum[i + 1]));
-      };
+        if (typeof ArryaNum[i - 1] == 'number') {          
+          ArraySoma.push(Number(ArryaNum[i - 1]));
+        };//se não for um número
     };
   });
 
