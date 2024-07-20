@@ -8,6 +8,7 @@ function btn_AC (){
   ArraySoma.length = 0;
   ArryaNum.length = 0;
   ArrayTemp.length = 0;
+  ArraySubtracao.length = 0;
   txt_num.innerHTML = '';
   txt_result.innerHTML = '';
 };
@@ -140,8 +141,6 @@ function btn_igual(){
 
   ArryaNum.forEach(function(value, index) {
     if(typeof value === 'string'){
-      console.log(value + index);
-
       if (value == '+') {
         if (index == 1) {
           if (typeof ArryaNum[index - 1] == 'number') {          
@@ -162,10 +161,30 @@ function btn_igual(){
         };
 
       }else if (value == '-') {
+        if (index == 1) {
+          if (typeof ArryaNum[index - 1] == 'number') {          
+            ArraySubtracao.push(Number(ArryaNum[index - 1]));
+          };
+          
+  
+          if (typeof ArryaNum[index + 1] == 'number') {          
+            ArraySubtracao.push(Number(ArryaNum[index + 1]));
+          };
+          
+          
+          Subtracao(index);
+          
+        }else{
+          if (typeof ArryaNum[index + 1] == 'number') {          
+            ArraySubtracao.push(Number(ArryaNum[index + 1]));
+          };
+          Subtracao(index);
+        };
         
       }else if (value == '=') {
         txt_result.innerHTML = ArrayTemp[0];
         ArrayTemp.length = 0;
+        ArraySubtracao.length = 0;
       };
 
         //se não for um número
@@ -178,8 +197,23 @@ function btn_igual(){
 var ArrayTemp = [];
 
 var ArraySubtracao = [];
-function Subtracao() {
-  
+function Subtracao(IndexArrayNum) {
+  let counter = 0;
+  if (IndexArrayNum == 1) {
+    counter = ArraySubtracao[0]
+    for (let i = 1; i < ArraySubtracao.length; i++) {
+      counter -= ArraySubtracao[i];
+    };
+    ArrayTemp.push(counter);
+    ArraySubtracao.length = 0;
+
+  } else{
+    counter = ArrayTemp[0];
+    ArrayTemp.length = 0;
+    counter -= ArraySubtracao[0];
+    ArraySubtracao.length = 0;
+    ArrayTemp.push(counter);
+  };
 };
 
 var ArraySoma = [];
@@ -191,7 +225,6 @@ function Soma(IndexArrayNum) {
     };
     ArrayTemp.push(counter);
     ArraySoma.length = 0;
-    counter = 0;
 
   } else{
     counter += ArrayTemp[0];
