@@ -7,6 +7,7 @@ function btn_AC (){
   array.length = 0;
   ArraySoma.length = 0;
   ArryaNum.length = 0;
+  ArrayTemp.length = 0;
   txt_num.innerHTML = '';
   txt_result.innerHTML = '';
 };
@@ -137,29 +138,68 @@ function btn_igual(){
 
   array.length = 0;
 
-  console.log(ArryaNum);
-  ArryaNum.forEach(function(value) {
-    if(typeof value === 'string'){  
-        var i = ArryaNum.indexOf(value);
-        if (typeof ArryaNum[i - 1] == 'number') {          
-          ArraySoma.push(Number(ArryaNum[i - 1]));
-        };//se não for um número
+  ArryaNum.forEach(function(value, index) {
+    if(typeof value === 'string'){
+      console.log(value + index);
+
+      if (value == '+') {
+        if (index == 1) {
+          if (typeof ArryaNum[index - 1] == 'number') {          
+            ArraySoma.push(Number(ArryaNum[index - 1]));
+          };
+  
+          if (typeof ArryaNum[index + 1] == 'number') {          
+            ArraySoma.push(Number(ArryaNum[index + 1]));
+          };
+          
+          Soma(index);
+          
+        }else{
+          if (typeof ArryaNum[index + 1] == 'number') {          
+            ArraySoma.push(Number(ArryaNum[index + 1]));
+          };
+          Soma(index);
+        };
+
+      }else if (value == '-') {
+        
+      }else if (value == '=') {
+        txt_result.innerHTML = ArrayTemp[0];
+        ArrayTemp.length = 0;
+      };
+
+        //se não for um número
     };
   });
 
   ArryaNum.length = 0;
-  Soma();
+};
 
-}; 
+var ArrayTemp = [];
+
+var ArraySubtracao = [];
+function Subtracao() {
+  
+};
 
 var ArraySoma = [];
-function Soma() {
-  var counter = 0;
-  for (let i = 0; i < ArraySoma.length; i++) {
-    counter += ArraySoma[i];
+function Soma(IndexArrayNum) {
+  let counter = 0;
+  if (IndexArrayNum == 1) {
+    for (let i = 0; i < ArraySoma.length; i++) {
+      counter += ArraySoma[i];
+    };
+    ArrayTemp.push(counter);
+    ArraySoma.length = 0;
+    counter = 0;
+
+  } else{
+    counter += ArrayTemp[0];
+    ArrayTemp.length = 0;
+    counter += ArraySoma[0];
+    ArraySoma.length = 0;
+    ArrayTemp.push(counter);
   };
-  txt_result.innerHTML = counter;
-  ArraySoma.length = 0;
 };
 
 function percorreArray(){
