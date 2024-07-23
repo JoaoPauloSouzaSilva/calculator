@@ -170,6 +170,14 @@ function AgrupaNumeros() {
 function IterarArrayNum() {
   ArryaNum.forEach(function (value, index) {
     if (typeof value === "string") {
+      if (value === 'x') {
+        LogicaMulti(index);
+      };
+    };
+  });
+
+  ArryaNum.forEach(function (value, index) {
+    if (typeof value === "string") {
       if (value == "+") {
         LogicaSoma(index);
       } else if (value == "-") {
@@ -188,20 +196,43 @@ function IterarArrayNum() {
   ArryaNum.length = 0;
 };
 
-function Multi(IndexArrayNum) {
+function LogicaMulti(index) {
+   // if (ArryaNum.indexOf("x") == 1) {
+    if (typeof ArryaNum[index - 1] == "number") {
+      ArrayMulti.push(Number(ArryaNum[index - 1]));
+    };
+  
+    if (typeof ArryaNum[index + 1] == "number") {
+      ArrayMulti.push(Number(ArryaNum[index + 1]));
+    };
+  
+    Multi();
+    IterarArrayNum();
+  
+      //ArryaNum.includes('x') se tiver x no array retorna true
+  
+    // } else {
+    //   if (typeof ArryaNum[ArryaNum.indexOf("x") + 1] == "number") {
+    //     ArraySoma.push(Number(ArryaNum[ArryaNum.indexOf("x") + 1]));
+    //   };
+    //   Multi();
+    // };
+};
+
+function Multi() {
   let counter = ArrayMulti[0];
   for (let i = 1; i < ArrayMulti.length; i++) {
     counter *= ArrayMulti[i];
   }
-  if (IndexArrayNum == 1) {
-    ArryaNum.slice(0, 2);
+  // if (IndexArrayNum == 1) {
+    ArryaNum.splice(0, 2);
     ArryaNum[0] = counter;
     ArrayMulti.length = 0;
-  } else {
-    ArryaNum.splice(IndexArrayNum - 1, 2);
-    ArryaNum[IndexArrayNum - 1] = counter;
-    ArrayMulti.length = 0;
-  }
+  // } else {
+  //   ArryaNum.splice(IndexArrayNum - 1, 2);
+  //   ArryaNum[IndexArrayNum - 1] = counter;
+  //   ArrayMulti.length = 0;
+  // };
 };
 
 function LogicaSoma(index) {
@@ -227,7 +258,6 @@ function LogicaSoma(index) {
 
 function Soma() {
   let counter = ArraySoma[0];
-  console.log(ArraySoma);
   for (let i = 1; i < ArraySoma.length; i++) {
     counter += ArraySoma[i];
   }
