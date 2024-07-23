@@ -67,26 +67,3 @@ if (value == '+') {
 
     se não for um número
     };
-
-    becape 003
-
-     // if (ArryaNum.indexOf("+") == 1) {
-          if (typeof ArryaNum[ArryaNum.indexOf("+") - 1] == "number") {
-            ArraySoma.push(Number(ArryaNum[ArryaNum.indexOf("+") - 1]));
-          };
-
-          if (typeof ArryaNum[ArryaNum.indexOf("+") + 1] == "number") {
-            ArraySoma.push(Number(ArryaNum[ArryaNum.indexOf("+") + 1]));
-          };
-
-          Soma();
-
-          if (ArryaNum != 1) {
-            IterarArrayNum();
-          };
-        // } else {
-        //   if (typeof ArryaNum[ArryaNum.indexOf("+") + 1] == "number") {
-        //     ArraySoma.push(Number(ArryaNum[ArryaNum.indexOf("+") + 1]));
-        //   };
-        //   Soma();
-        // };
