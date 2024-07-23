@@ -1,0 +1,92 @@
+becape 001
+
+ if (ArryaNum.indexOf("+") != -1) {
+    if (ArryaNum.indexOf("+") == 1) {
+      if (typeof ArryaNum[ArryaNum.indexOf("+") - 1] == "number") {
+        ArraySoma.push(Number(ArryaNum[ArryaNum.indexOf("+") - 1]));
+      }
+
+      if (typeof ArryaNum[ArryaNum.indexOf("+") + 1] == "number") {
+        ArraySoma.push(Number(ArryaNum[ArryaNum.indexOf("+") + 1]));
+      }
+
+      Soma(ArryaNum.indexOf("+"));
+    } else {
+      if (typeof ArryaNum[ArryaNum.indexOf("+") + 1] == "number") {
+        ArraySoma.push(Number(ArryaNum[ArryaNum.indexOf("+") + 1]));
+      }
+      Soma(ArryaNum.indexOf("+"));
+    }
+  };
+
+becape 002
+
+if (value == '+') {
+      if (index == 1) {
+        if (typeof ArryaNum[index - 1] == 'number') {
+          ArraySoma.push(Number(ArryaNum[index - 1]));
+        };
+
+        if (typeof ArryaNum[index + 1] == 'number') {
+          ArraySoma.push(Number(ArryaNum[index + 1]));
+        };
+
+        Soma(index);
+
+      }else{
+        if (typeof ArryaNum[index + 1] == 'number') {
+          ArraySoma.push(Number(ArryaNum[index + 1]));
+        };
+        Soma(index);
+      };
+
+    }else if (value == '-') {
+      if (index == 1) {
+        if (typeof ArryaNum[index - 1] == 'number') {
+          ArraySubtracao.push(Number(ArryaNum[index - 1]));
+        };
+
+        if (typeof ArryaNum[index + 1] == 'number') {
+          ArraySubtracao.push(Number(ArryaNum[index + 1]));
+        };
+
+        Subtracao(index);
+
+      }else{
+        if (typeof ArryaNum[index + 1] == 'number') {
+          ArraySubtracao.push(Number(ArryaNum[index + 1]));
+        };
+        Subtracao(index);
+      };
+
+    }else if (value == '=') {
+      txt_result.innerHTML = ArrayTemp[0];
+      ArrayTemp.length = 0;
+      ArraySubtracao.length = 0;
+    };
+
+    se não for um número
+    };
+
+    becape 003
+
+     // if (ArryaNum.indexOf("+") == 1) {
+          if (typeof ArryaNum[ArryaNum.indexOf("+") - 1] == "number") {
+            ArraySoma.push(Number(ArryaNum[ArryaNum.indexOf("+") - 1]));
+          };
+
+          if (typeof ArryaNum[ArryaNum.indexOf("+") + 1] == "number") {
+            ArraySoma.push(Number(ArryaNum[ArryaNum.indexOf("+") + 1]));
+          };
+
+          Soma();
+
+          if (ArryaNum != 1) {
+            IterarArrayNum();
+          };
+        // } else {
+        //   if (typeof ArryaNum[ArryaNum.indexOf("+") + 1] == "number") {
+        //     ArraySoma.push(Number(ArryaNum[ArryaNum.indexOf("+") + 1]));
+        //   };
+        //   Soma();
+        // };

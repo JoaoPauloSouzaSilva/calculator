@@ -1,5 +1,13 @@
 var count;
+var parenteseIs = true;
+var num = "";
+
 var array = [];
+var ArryaNum = [];
+var ArrayMulti = [];
+var ArraySubtracao = [];
+var ArraySoma = [];
+
 var txt_num = document.getElementById("count");
 var txt_result = document.getElementById("result");
 
@@ -12,8 +20,6 @@ function btn_AC() {
   txt_num.innerHTML = "";
   txt_result.innerHTML = "";
 }
-
-var parenteseIs = true;
 
 function btn_parentesis() {
   if (parenteseIs) {
@@ -118,9 +124,6 @@ function btn_9() {
   percorreArray();
 }
 
-var num = "";
-var ArryaNum = [];
-
 function btn_igual() {
   array.push("=");
   array.forEach(function (caracter) {
@@ -139,149 +142,22 @@ function btn_igual() {
 
   array.length = 0;
 
-  while (ArryaNum.length != 1) {
-    
-  };
+  // if (ArryaNum.indexOf("x") != -1) {
+  //   if (typeof ArryaNum[ArryaNum.indexOf("x") - 1] == "number") {
+  //     ArrayMulti.push(Number(ArryaNum[ArryaNum.indexOf("x") - 1]));
+  //   }
 
-  if (ArryaNum.indexOf("x") != -1) {
-    if (typeof ArryaNum[ArryaNum.indexOf("x") - 1] == "number") {
-      ArrayMulti.push(Number(ArryaNum[ArryaNum.indexOf("x") - 1]));
-    }
+  //   if (typeof ArryaNum[ArryaNum.indexOf("x") + 1] == "number") {
+  //     ArrayMulti.push(Number(ArryaNum[ArryaNum.indexOf("x") + 1]));
+  //   }
 
-    if (typeof ArryaNum[ArryaNum.indexOf("x") + 1] == "number") {
-      ArrayMulti.push(Number(ArryaNum[ArryaNum.indexOf("x") + 1]));
-    }
+  //   Multi(ArryaNum.indexOf("x"));
+  // }
 
-    Multi(ArryaNum.indexOf("x"));
-  };
-
-  if (ArryaNum.indexOf("+") != -1) {
-    if (ArryaNum.indexOf("+") == 1) {
-      if (typeof ArryaNum[ArryaNum.indexOf("+") - 1] == "number") {
-        ArraySoma.push(Number(ArryaNum[ArryaNum.indexOf("+") - 1]));
-      }
-
-      if (typeof ArryaNum[ArryaNum.indexOf("+") + 1] == "number") {
-        ArraySoma.push(Number(ArryaNum[ArryaNum.indexOf("+") + 1]));
-      }
-
-      Soma(ArryaNum.indexOf("+"));
-    } else {
-      if (typeof ArryaNum[ArryaNum.indexOf("+") + 1] == "number") {
-        ArraySoma.push(Number(ArryaNum[ArryaNum.indexOf("+") + 1]));
-      }
-      Soma(ArryaNum.indexOf("+"));
-    }
-  };
-
-
-  txt_result.innerHTML = ArryaNum[0];
-  array.length = 0;
-  ArraySoma.length = 0;
-  ArryaNum.length = 0;
-  ArraySubtracao.length = 0;
-  ArrayMulti.length = 0;
-
-  // ArryaNum.forEach(function (value, index) {
-  //   if (typeof value === "string") {
-  //     if (value == "+") {
-  //       if (index == 1) {
-  //         if (typeof ArryaNum[index - 1] == "number") {
-  //           ArraySoma.push(Number(ArryaNum[index - 1]));
-  //         }
-
-  //         if (typeof ArryaNum[index + 1] == "number") {
-  //           ArraySoma.push(Number(ArryaNum[index + 1]));
-  //         }
-
-  //         Soma(index);
-  //       } else {
-  //         if (typeof ArryaNum[index + 1] == "number") {
-  //           ArraySoma.push(Number(ArryaNum[index + 1]));
-  //         }
-  //         Soma(index);
-  //       }
-  //     } else if (value == "-"){
-  //       if (index == 1) {
-  //         if (typeof ArryaNum[index - 1] == "number") {
-  //           ArraySubtracao.push(Number(ArryaNum[index - 1]));
-  //         }
-
-  //         if (typeof ArryaNum[index + 1] == "number") {
-  //           ArraySubtracao.push(Number(ArryaNum[index + 1]));
-  //         }
-
-  //         Subtracao(index);
-  //       } else {
-  //         if (typeof ArryaNum[index + 1] == "number") {
-  //           ArraySubtracao.push(Number(ArryaNum[index + 1]));
-  //         }
-  //         Subtracao(index);
-  //       }
-  //     }
-  //   } else {
-  //     txt_result.innerHTML = ArryaNum[0];
-  //     array.length = 0;
-  //     ArraySoma.length = 0;
-  //     ArryaNum.length = 0;
-  //     ArraySubtracao.length = 0;
-  //     ArrayMulti.length = 0;
-  //   };
-
-  //   // if (value == '+') {
-  //   //   if (index == 1) {
-  //   //     if (typeof ArryaNum[index - 1] == 'number') {
-  //   //       ArraySoma.push(Number(ArryaNum[index - 1]));
-  //   //     };
-
-  //   //     if (typeof ArryaNum[index + 1] == 'number') {
-  //   //       ArraySoma.push(Number(ArryaNum[index + 1]));
-  //   //     };
-
-  //   //     Soma(index);
-
-  //   //   }else{
-  //   //     if (typeof ArryaNum[index + 1] == 'number') {
-  //   //       ArraySoma.push(Number(ArryaNum[index + 1]));
-  //   //     };
-  //   //     Soma(index);
-  //   //   };
-
-  //   // }else if (value == '-') {
-  //   //   if (index == 1) {
-  //   //     if (typeof ArryaNum[index - 1] == 'number') {
-  //   //       ArraySubtracao.push(Number(ArryaNum[index - 1]));
-  //   //     };
-
-  //   //     if (typeof ArryaNum[index + 1] == 'number') {
-  //   //       ArraySubtracao.push(Number(ArryaNum[index + 1]));
-  //   //     };
-
-  //   //     Subtracao(index);
-
-  //   //   }else{
-  //   //     if (typeof ArryaNum[index + 1] == 'number') {
-  //   //       ArraySubtracao.push(Number(ArryaNum[index + 1]));
-  //   //     };
-  //   //     Subtracao(index);
-  //   //   };
-
-  //   // }else if (value == '=') {
-  //   //   txt_result.innerHTML = ArrayTemp[0];
-  //   //   ArrayTemp.length = 0;
-  //   //   ArraySubtracao.length = 0;
-  //   // };
-
-  //   //se não for um número
-  //   // };
-  // });
+  IterarArrayNum();
 
   ArryaNum.length = 0;
 }
-
-var ArrayMulti = [];
-
-var ArraySubtracao = [];
 
 function Multi(IndexArrayNum) {
   let counter = ArrayMulti[0];
@@ -327,43 +203,87 @@ function Subtracao(IndexArrayNum) {
   // };
 }
 
-var ArraySoma = [];
-function Soma(IndexArrayNum) {
-  let counter = 0;
-  for (let i = 0; i < ArraySoma.length; i++) {
+function Soma() {
+  let counter = ArraySoma[0];
+  console.log(ArraySoma);
+  for (let i = 1; i < ArraySoma.length; i++) {
     counter += ArraySoma[i];
-  }
-  if (IndexArrayNum == 1) {
-    ArryaNum.slice(0, 2);
-    console.log(ArryaNum[0]);
-    ArryaNum[0] = counter;
-    console.log(ArryaNum[0]);
-    ArraySoma.length = 0;
-  } else {
-    ArryaNum.splice(IndexArrayNum - 1, 2);
-    ArryaNum[IndexArrayNum - 1] = counter;
-    ArraySoma.length = 0;
-  }
-
+  };
   // if (IndexArrayNum == 1) {
-  //   for (let i = 0; i < ArraySoma.length; i++) {
-  //     counter += ArraySoma[i];
-  //   };
-  //   ArrayTemp.push(counter);
+    console.log(ArryaNum);
+    ArryaNum.splice(0, 2);
+    console.log(ArryaNum);
+    ArryaNum[0] = counter;
+    console.log(ArryaNum);
+    ArraySoma.length = 0;
+  // } else {
+  //   ArryaNum.splice(IndexArrayNum - 1, 2);
+  //   ArryaNum[IndexArrayNum - 1] = counter;
   //   ArraySoma.length = 0;
-
-  // } else{
-  //   counter += ArrayTemp[0];
-  //   ArrayTemp.length = 0;
-  //   counter += ArraySoma[0];
-  //   ArraySoma.length = 0;
-  //   ArrayTemp.push(counter);
   // };
-}
+};
 
 function percorreArray() {
   txt_num.innerHTML = "";
   array.forEach(function (caracter) {
     txt_num.innerHTML += caracter;
   });
-}
+};
+
+function IterarArrayNum() {
+  ArryaNum.forEach(function (value, index) {
+    if (typeof value === "string") {
+      if (value == "+") {
+       LogicaSoma(index);
+      }else if (value == '-') {
+        if (ArryaNum.indexOf("-") == 1) {
+          if (typeof ArryaNum[ArryaNum.indexOf("-") - 1] == "number") {
+            ArraySubtracao.push(Number(ArryaNum[ArryaNum.indexOf("-") - 1]));
+          };
+
+          if (typeof ArryaNum[ArryaNum.indexOf("-") + 1] == "number") {
+            ArraySubtracao.push(Number(ArryaNum[ArryaNum.indexOf("-") + 1]));
+          };
+
+          Subtracao(ArryaNum.indexOf("-"));
+        } else {
+          if (typeof ArryaNum[ArryaNum.indexOf("-") + 1] == "number") {
+            ArraySubtracao.push(Number(ArryaNum[ArryaNum.indexOf("-") + 1]));
+          };
+          Subtracao(ArryaNum.indexOf("-"));
+        };
+      }else{
+        // por enquanto
+        txt_result.innerHTML = ArryaNum[0];
+        array.length = 0;
+        ArraySoma.length = 0;
+        ArryaNum.length = 0;
+        ArraySubtracao.length = 0;
+        ArrayMulti.length = 0;
+      };
+    };
+  });
+};
+
+function LogicaSoma(index) {
+   // if (ArryaNum.indexOf("+") == 1) {
+    if (typeof ArryaNum[index - 1] == "number") {
+      ArraySoma.push(Number(ArryaNum[index - 1]));
+    };
+
+    if (typeof ArryaNum[index + 1] == "number") {
+      ArraySoma.push(Number(ArryaNum[index + 1]));
+    };
+
+    Soma();
+
+    if (ArryaNum != 1) {
+      IterarArrayNum();
+    };
+  // } else {
+  //   if (typeof ArryaNum[ArryaNum.indexOf("+") + 1] == "number") {
+  //     ArraySoma.push(Number(ArryaNum[ArryaNum.indexOf("+") + 1]));
+  //   };
+  //   Soma();
+  // };
+};
