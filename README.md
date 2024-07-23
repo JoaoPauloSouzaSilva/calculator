@@ -1,1 +1,1 @@
-Acesso em: (https://joaopaulosouzasilva.github.io/calculator/)[https://joaopaulosouzasilva.github.io/calculator/]
+Acesso em: [https://joaopaulosouzasilva.github.io/calculator/]
