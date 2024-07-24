@@ -8,6 +8,7 @@ var ArrayMulti = [];
 var ArraySubtracao = [];
 var ArraySoma = [];
 var ArrayDivisao = [];
+var ArrayPorcentagem = [];
 
 var txt_num = document.getElementById("count");
 var txt_result = document.getElementById("result");
@@ -19,10 +20,11 @@ function btn_AC() {
   ArraySubtracao.length = 0;
   ArrayMulti.length = 0;
   ArrayDivisao.length = 0;
+  ArrayPorcentagem.length = 0;
 
   txt_num.innerHTML = "";
   txt_result.innerHTML = "";
-};
+}
 
 function btn_parentesis() {
   if (parenteseIs) {
@@ -31,30 +33,30 @@ function btn_parentesis() {
   } else {
     array.push(")");
     parenteseIs = true;
-  };
+  }
   percorreArray();
-};
+}
 
 function btn_porcentagem() {
   if (array.length > 0 && typeof array[array.length - 1] === "number") {
     array.push("%");
-  };
+  }
   percorreArray();
-};
+}
 
 function btn_divisao() {
   if (array.length > 0 && typeof array[array.length - 1] === "number") {
     array.push("÷");
-  };
+  }
   percorreArray();
-};
+}
 
 function btn_multiplicacao() {
   if (array.length > 0 && typeof array[array.length - 1] === "number") {
     array.push("x");
-  };
+  }
   percorreArray();
-};
+}
 
 function btn_subtracao() {
   // if ( array.length === 0 || typeof array[array.length - 1] === "number" || array[array.length - 1] === 'x') {
@@ -62,79 +64,81 @@ function btn_subtracao() {
   // };
   if (array.length > 0 && typeof array[array.length - 1] === "number") {
     array.push("-");
-  };
+  }
 
   percorreArray();
-};
+}
 
 function btn_soma() {
   if (array.length > 0 && typeof array[array.length - 1] === "number") {
     array.push("+");
-  };
+  }
   percorreArray();
-};
+}
 
 function btn_virgula() {
   if (array.length > 0 && typeof array[array.length - 1] === "number") {
     array.push(",");
-  };
+  }
   percorreArray();
-};
+}
 
 function btn_0() {
   array.push(0);
   percorreArray();
-};
+}
 
 function btn_1() {
   array.push(1);
   percorreArray();
-};
+}
 
 function btn_2() {
   array.push(2);
   percorreArray();
-};
+}
 
 function btn_3() {
   array.push(3);
   percorreArray();
-};
+}
 
 function btn_4() {
   array.push(4);
   percorreArray();
-};
+}
 
 function btn_5() {
   array.push(5);
   percorreArray();
-};
+}
 
 function btn_6() {
   array.push(6);
   percorreArray();
-};
+}
 
 function btn_7() {
   array.push(7);
   percorreArray();
-};
+}
 
 function btn_8() {
   array.push(8);
   percorreArray();
-};
+}
 
 function btn_9() {
   array.push(9);
   percorreArray();
-};
+}
 
 function btn_igual() {
   array.push("=");
+  // if (typeof array[array.length - 2] == "number") {
   AgrupaNumeros();
   IterarArrayNum();
+  // };
 
   // if (ArryaNum.indexOf("x") != -1) {
   //   if (typeof ArryaNum[ArryaNum.indexOf("x") - 1] == "number") {
@@ -147,15 +151,14 @@ function btn_igual() {
 
   //   Multi(ArryaNum.indexOf("x"));
   // };
-};
-
+}
 
 function percorreArray() {
   txt_num.innerHTML = "";
   array.forEach(function (caracter) {
     txt_num.innerHTML += caracter;
   });
-};
+}
 
 function AgrupaNumeros() {
   array.forEach(function (caracter) {
@@ -164,15 +167,15 @@ function AgrupaNumeros() {
         num = caracter.toString();
       } else {
         num += caracter.toString();
-      };
+      }
     } else {
       ArryaNum.push(Number(num));
       num = "";
       ArryaNum.push(caracter);
-    };
+    }
   });
   array.length = 0;
-};
+}
 
 function IterarArrayNum() {
   // ArryaNum.forEach(function (value, index) {
@@ -182,12 +185,14 @@ function IterarArrayNum() {
   // });
 
   for (let i = 0; i <= ArryaNum.length; i++) {
-    if (ArryaNum[i] == 'x'){
+    if (ArryaNum[i] == "x") {
       LogicaMulti(i);
-    } else if (ArryaNum[i] == '÷') {
+    } else if (ArryaNum[i] == "÷") {
       LogicaDivisao(i);
-    };
-  };
+    } else if (ArryaNum[i] == "%") {
+      LogicaPorcentagem(i);
+    }
+  }
 
   ArryaNum.forEach(function (value, index) {
     if (typeof value === "string") {
@@ -204,21 +209,68 @@ function IterarArrayNum() {
         ArraySubtracao.length = 0;
         ArrayMulti.length = 0;
         ArrayDivisao.length = 0;
-      };
-    };
+        ArrayPorcentagem.length = 0;
+      }
+    }
   });
   ArryaNum.length = 0;
+}
+
+function LogicaPorcentagem(index) {
+  // if (ArryaNum.indexOf("x") == 1) {
+  if (typeof ArryaNum[index - 1] == "number") {
+    ArrayPorcentagem.push(Number(ArryaNum[index - 1]));
+  }
+
+  if (typeof ArryaNum[index + 1] == "number") {
+    ArrayPorcentagem.push(Number(ArryaNum[index + 1]));
+  }
+  // else{
+  //   ArryaNum.splice(index + 1, 1);
+  //   ArrayMulti.push(Number(ArryaNum[index + 1]) * -1);
+
+  // };
+
+  Porcentagem(index);
+  IterarArrayNum();
+
+  //ArryaNum.includes('x') se tiver x no array retorna true
+
+  // } else {
+  //   if (typeof ArryaNum[ArryaNum.indexOf("x") + 1] == "number") {
+  //     ArraySoma.push(Number(ArryaNum[ArryaNum.indexOf("x") + 1]));
+  //   };
+  //   Multi();
+  // };
+}
+
+function Porcentagem(index) {
+  let counter = ArrayPorcentagem[0];
+  // if (ArrayPorcentagem.length == 1) {
+    counter /= 100;
+    ArryaNum.splice(index - 1, 2);
+    ArryaNum[index - 1] = counter;
+    ArrayPorcentagem.length = 0;
+  // } else {
+  //   for (let i = 1; i < ArrayPorcentagem.length; i++) {
+  //     counter /= ArrayPorcentagem[i];
+  //   };
+
+  //   ArryaNum.splice(index - 1, 2);
+  //   ArryaNum[index - 1] = counter;
+  //   ArrayPorcentagem.length = 0;
+  // };
 };
 
 function LogicaDivisao(index) {
   // if (ArryaNum.indexOf("x") == 1) {
-    if (typeof ArryaNum[index - 1] == "number") {
-      ArrayDivisao.push(Number(ArryaNum[index - 1]));
-  };
+  if (typeof ArryaNum[index - 1] == "number") {
+    ArrayDivisao.push(Number(ArryaNum[index - 1]));
+  }
 
   if (typeof ArryaNum[index + 1] == "number") {
     ArrayDivisao.push(Number(ArryaNum[index + 1]));
-  };
+  }
   // else{
   //   ArryaNum.splice(index + 1, 1);
   //   ArrayMulti.push(Number(ArryaNum[index + 1]) * -1);
@@ -228,7 +280,7 @@ function LogicaDivisao(index) {
   Divisao(index);
   IterarArrayNum();
 
-    //ArryaNum.includes('x') se tiver x no array retorna true
+  //ArryaNum.includes('x') se tiver x no array retorna true
 
   // } else {
   //   if (typeof ArryaNum[ArryaNum.indexOf("x") + 1] == "number") {
@@ -236,67 +288,67 @@ function LogicaDivisao(index) {
   //   };
   //   Multi();
   // };
-};
+}
 
 function Divisao(index) {
   let counter = ArrayDivisao[0];
   for (let i = 1; i < ArrayDivisao.length; i++) {
     counter /= ArrayDivisao[i];
-  };
+  }
   // if (IndexArrayNum == 1) {
-    ArryaNum.splice(index - 1, 2);
-    ArryaNum[index - 1] = counter;
-    ArrayDivisao.length = 0;
+  ArryaNum.splice(index - 1, 2);
+  ArryaNum[index - 1] = counter;
+  ArrayDivisao.length = 0;
   // } else {
   //   ArryaNum.splice(IndexArrayNum - 1, 2);
   //   ArryaNum[IndexArrayNum - 1] = counter;
   //   ArrayMulti.length = 0;
   // };
-};
+}
 
 function LogicaMulti(index) {
-   // if (ArryaNum.indexOf("x") == 1) {
-    if (typeof ArryaNum[index - 1] == "number") {
-        ArrayMulti.push(Number(ArryaNum[index - 1]));
-    };
-  
-    if (typeof ArryaNum[index + 1] == "number") {
-      ArrayMulti.push(Number(ArryaNum[index + 1]));
-    };
-    // else{
-    //   ArryaNum.splice(index + 1, 1);
-    //   ArrayMulti.push(Number(ArryaNum[index + 1]) * -1);
+  // if (ArryaNum.indexOf("x") == 1) {
+  if (typeof ArryaNum[index - 1] == "number") {
+    ArrayMulti.push(Number(ArryaNum[index - 1]));
+  }
 
-    // };
-  
-    Multi(index);
-    IterarArrayNum();
-  
-      //ArryaNum.includes('x') se tiver x no array retorna true
-  
-    // } else {
-    //   if (typeof ArryaNum[ArryaNum.indexOf("x") + 1] == "number") {
-    //     ArraySoma.push(Number(ArryaNum[ArryaNum.indexOf("x") + 1]));
-    //   };
-    //   Multi();
-    // };
-};
+  if (typeof ArryaNum[index + 1] == "number") {
+    ArrayMulti.push(Number(ArryaNum[index + 1]));
+  }
+  // else{
+  //   ArryaNum.splice(index + 1, 1);
+  //   ArrayMulti.push(Number(ArryaNum[index + 1]) * -1);
+
+  // };
+
+  Multi(index);
+  IterarArrayNum();
+
+  //ArryaNum.includes('x') se tiver x no array retorna true
+
+  // } else {
+  //   if (typeof ArryaNum[ArryaNum.indexOf("x") + 1] == "number") {
+  //     ArraySoma.push(Number(ArryaNum[ArryaNum.indexOf("x") + 1]));
+  //   };
+  //   Multi();
+  // };
+}
 
 function Multi(index) {
   let counter = ArrayMulti[0];
   for (let i = 1; i < ArrayMulti.length; i++) {
     counter *= ArrayMulti[i];
-  };
+  }
   // if (IndexArrayNum == 1) {
-    ArryaNum.splice(index - 1, 2);
-    ArryaNum[index - 1] = counter;
-    ArrayMulti.length = 0;
+  ArryaNum.splice(index - 1, 2);
+  ArryaNum[index - 1] = counter;
+  ArrayMulti.length = 0;
   // } else {
   //   ArryaNum.splice(IndexArrayNum - 1, 2);
   //   ArryaNum[IndexArrayNum - 1] = counter;
   //   ArrayMulti.length = 0;
   // };
-};
+}
 
 function LogicaSoma(index) {
   // if (ArryaNum.indexOf("+") == 1) {
@@ -317,13 +369,13 @@ function LogicaSoma(index) {
   //   };
   //   Soma();
   // };
-};
+}
 
 function Soma() {
   let counter = ArraySoma[0];
   for (let i = 1; i < ArraySoma.length; i++) {
     counter += ArraySoma[i];
-  };
+  }
   // if (IndexArrayNum == 1) {
   ArryaNum.splice(0, 2);
   ArryaNum[0] = counter;
@@ -333,7 +385,7 @@ function Soma() {
   //   ArryaNum[IndexArrayNum - 1] = counter;
   //   ArraySoma.length = 0;
   // };
-};
+}
 
 function LogicaSubtracao(index) {
   // if (ArryaNum.indexOf("-") == 1) {
@@ -354,13 +406,13 @@ function LogicaSubtracao(index) {
   //   };
   //   Subtracao(ArryaNum.indexOf("-"));
   // };
-};
+}
 
 function Subtracao() {
   let counter = ArraySubtracao[0];
   for (let i = 1; i < ArraySubtracao.length; i++) {
     counter -= ArraySubtracao[i];
-  };
+  }
   // if (IndexArrayNum == 1) {
   ArryaNum.splice(0, 2);
   ArryaNum[0] = counter;
@@ -370,4 +422,4 @@ function Subtracao() {
   //   ArryaNum[IndexArrayNum - 1] = counter;
   //   ArraySubtracao.length = 0;
   // };
-};
+}
