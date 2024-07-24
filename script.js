@@ -19,7 +19,7 @@ function btn_AC() {
   ArrayMulti.length = 0;
   txt_num.innerHTML = "";
   txt_result.innerHTML = "";
-}
+};
 
 function btn_parentesis() {
   if (parenteseIs) {
@@ -28,101 +28,105 @@ function btn_parentesis() {
   } else {
     array.push(")");
     parenteseIs = true;
-  }
+  };
   percorreArray();
-}
+};
 
 function btn_porcentagem() {
   if (array.length > 0 && typeof array[array.length - 1] === "number") {
     array.push("%");
-  }
+  };
   percorreArray();
-}
+};
 
 function btn_divisao() {
   if (array.length > 0 && typeof array[array.length - 1] === "number") {
     array.push("÷");
-  }
+  };
   percorreArray();
-}
+};
 
 function btn_multiplicacao() {
   if (array.length > 0 && typeof array[array.length - 1] === "number") {
     array.push("x");
-  }
+  };
   percorreArray();
-}
+};
 
 function btn_subtracao() {
+  // if ( array.length === 0 || typeof array[array.length - 1] === "number" || array[array.length - 1] === 'x') {
+  //   array.push("-");
+  // };
   if (array.length > 0 && typeof array[array.length - 1] === "number") {
     array.push("-");
-  }
+  };
+
   percorreArray();
-}
+};
 
 function btn_soma() {
   if (array.length > 0 && typeof array[array.length - 1] === "number") {
     array.push("+");
-  }
+  };
   percorreArray();
-}
+};
 
 function btn_virgula() {
   if (array.length > 0 && typeof array[array.length - 1] === "number") {
     array.push(",");
-  }
+  };
   percorreArray();
-}
+};
 
 function btn_0() {
   array.push(0);
   percorreArray();
-}
+};
 
 function btn_1() {
   array.push(1);
   percorreArray();
-}
+};
 
 function btn_2() {
   array.push(2);
   percorreArray();
-}
+};
 
 function btn_3() {
   array.push(3);
   percorreArray();
-}
+};
 
 function btn_4() {
   array.push(4);
   percorreArray();
-}
+};
 
 function btn_5() {
   array.push(5);
   percorreArray();
-}
+};
 
 function btn_6() {
   array.push(6);
   percorreArray();
-}
+};
 
 function btn_7() {
   array.push(7);
   percorreArray();
-}
+};
 
 function btn_8() {
   array.push(8);
   percorreArray();
-}
+};
 
 function btn_9() {
   array.push(9);
   percorreArray();
-}
+};
 
 function btn_igual() {
   array.push("=");
@@ -168,13 +172,17 @@ function AgrupaNumeros() {
 };
 
 function IterarArrayNum() {
-  ArryaNum.forEach(function (value, index) {
-    if (typeof value === "string") {
-      if (value === 'x') {
-        LogicaMulti(index);
-      };
+  // ArryaNum.forEach(function (value, index) {
+  //     if (value === 'x') {
+  //       LogicaMulti(index);
+  //     };
+  // });
+
+  for (let i = 0; i <= ArryaNum.length; i++) {
+    if (ArryaNum[i] == 'x'){
+      LogicaMulti(i);
     };
-  });
+  };
 
   ArryaNum.forEach(function (value, index) {
     if (typeof value === "string") {
@@ -199,14 +207,19 @@ function IterarArrayNum() {
 function LogicaMulti(index) {
    // if (ArryaNum.indexOf("x") == 1) {
     if (typeof ArryaNum[index - 1] == "number") {
-      ArrayMulti.push(Number(ArryaNum[index - 1]));
+        ArrayMulti.push(Number(ArryaNum[index - 1]));
     };
   
     if (typeof ArryaNum[index + 1] == "number") {
       ArrayMulti.push(Number(ArryaNum[index + 1]));
     };
+    // else{
+    //   ArryaNum.splice(index + 1, 1);
+    //   ArrayMulti.push(Number(ArryaNum[index + 1]) * -1);
+
+    // };
   
-    Multi();
+    Multi(index);
     IterarArrayNum();
   
       //ArryaNum.includes('x') se tiver x no array retorna true
@@ -219,14 +232,14 @@ function LogicaMulti(index) {
     // };
 };
 
-function Multi() {
+function Multi(index) {
   let counter = ArrayMulti[0];
   for (let i = 1; i < ArrayMulti.length; i++) {
     counter *= ArrayMulti[i];
-  }
+  };
   // if (IndexArrayNum == 1) {
-    ArryaNum.splice(0, 2);
-    ArryaNum[0] = counter;
+    ArryaNum.splice(index - 1, 2);
+    ArryaNum[index - 1] = counter;
     ArrayMulti.length = 0;
   // } else {
   //   ArryaNum.splice(IndexArrayNum - 1, 2);
@@ -260,7 +273,7 @@ function Soma() {
   let counter = ArraySoma[0];
   for (let i = 1; i < ArraySoma.length; i++) {
     counter += ArraySoma[i];
-  }
+  };
   // if (IndexArrayNum == 1) {
   ArryaNum.splice(0, 2);
   ArryaNum[0] = counter;
@@ -270,7 +283,7 @@ function Soma() {
   //   ArryaNum[IndexArrayNum - 1] = counter;
   //   ArraySoma.length = 0;
   // };
-}
+};
 
 function LogicaSubtracao(index) {
   // if (ArryaNum.indexOf("-") == 1) {
@@ -297,7 +310,7 @@ function Subtracao() {
   let counter = ArraySubtracao[0];
   for (let i = 1; i < ArraySubtracao.length; i++) {
     counter -= ArraySubtracao[i];
-  }
+  };
   // if (IndexArrayNum == 1) {
   ArryaNum.splice(0, 2);
   ArryaNum[0] = counter;
@@ -307,4 +320,4 @@ function Subtracao() {
   //   ArryaNum[IndexArrayNum - 1] = counter;
   //   ArraySubtracao.length = 0;
   // };
-}
+};
