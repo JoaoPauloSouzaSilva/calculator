@@ -73,9 +73,9 @@ function btn_soma() {
   percorreArray();
 };
 
-function btn_virgula() {
+function btn_ponto() {
   if (array.length > 0 && typeof array[array.length - 1] === "number") {
-    array.push(",");
+    array.push(".");
   };
   percorreArray();
 };
@@ -161,6 +161,15 @@ function AgrupaNumeros() {
 };
 
 function IterarArrayNum() {
+
+  for (let i = 0; i < ArryaNum.length; i++) {    
+    if (ArryaNum[i] == '.') {
+      UniNumeros(i);
+    };
+  };
+
+  // ( )
+
   for (let i = 0; i <= ArryaNum.length; i++) {
     if (ArryaNum[i] == "x") {
       LogicaMulti(i);
@@ -193,8 +202,17 @@ function IterarArrayNum() {
   ArryaNum.length = 0;
 };
 
-function LogicaPorcentagem(index) {
+function UniNumeros(index) {
+  let PrevNum = ArryaNum[index - 1].toString();
+  let NextNum = ArryaNum[index + 1].toString();
+  NextNum = `${PrevNum}.${NextNum}`;
+  ArryaNum.splice(index - 1, 2);
+  ArryaNum[index - 1] = Number(NextNum);
 
+  IterarArrayNum();
+};
+
+function LogicaPorcentagem(index) {
   if (typeof ArryaNum[index - 1] == "number") {
     ArrayPorcentagem.push(Number(ArryaNum[index - 1]));
   };
@@ -209,20 +227,10 @@ function LogicaPorcentagem(index) {
 
 function Porcentagem(index) {
   let counter = ArrayPorcentagem[0];
-  // if (ArrayPorcentagem.length == 1) {
     counter /= 100;
     ArryaNum.splice(index - 1, 2);
     ArryaNum[index - 1] = counter;
     ArrayPorcentagem.length = 0;
-  // } else {
-  //   for (let i = 1; i < ArrayPorcentagem.length; i++) {
-  //     counter /= ArrayPorcentagem[i];
-  //   };
-
-  //   ArryaNum.splice(index - 1, 2);
-  //   ArryaNum[index - 1] = counter;
-  //   ArrayPorcentagem.length = 0;
-  // };
 };
 
 function LogicaDivisao(index) {
