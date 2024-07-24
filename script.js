@@ -52,7 +52,7 @@ function btn_divisao() {
 };
 
 function btn_multiplicacao() {
-  if (array.length > 0 && typeof array[array.length - 1] === "number") {
+  if (array.length > 0 || typeof array[array.length - 1] === "number" || array[array.length - 1] === "%") {
     array.push("x");
   };
   percorreArray();
