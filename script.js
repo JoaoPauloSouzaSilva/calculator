@@ -7,6 +7,7 @@ var ArryaNum = [];
 var ArrayMulti = [];
 var ArraySubtracao = [];
 var ArraySoma = [];
+var ArrayDivisao = [];
 
 var txt_num = document.getElementById("count");
 var txt_result = document.getElementById("result");
@@ -17,6 +18,8 @@ function btn_AC() {
   ArryaNum.length = 0;
   ArraySubtracao.length = 0;
   ArrayMulti.length = 0;
+  ArrayDivisao.length = 0;
+
   txt_num.innerHTML = "";
   txt_result.innerHTML = "";
 };
@@ -181,6 +184,8 @@ function IterarArrayNum() {
   for (let i = 0; i <= ArryaNum.length; i++) {
     if (ArryaNum[i] == 'x'){
       LogicaMulti(i);
+    } else if (ArryaNum[i] == '÷') {
+      LogicaDivisao(i);
     };
   };
 
@@ -198,10 +203,55 @@ function IterarArrayNum() {
         ArryaNum.length = 0;
         ArraySubtracao.length = 0;
         ArrayMulti.length = 0;
+        ArrayDivisao.length = 0;
       };
     };
   });
   ArryaNum.length = 0;
+};
+
+function LogicaDivisao(index) {
+  // if (ArryaNum.indexOf("x") == 1) {
+    if (typeof ArryaNum[index - 1] == "number") {
+      ArrayDivisao.push(Number(ArryaNum[index - 1]));
+  };
+
+  if (typeof ArryaNum[index + 1] == "number") {
+    ArrayDivisao.push(Number(ArryaNum[index + 1]));
+  };
+  // else{
+  //   ArryaNum.splice(index + 1, 1);
+  //   ArrayMulti.push(Number(ArryaNum[index + 1]) * -1);
+
+  // };
+
+  Divisao(index);
+  IterarArrayNum();
+
+    //ArryaNum.includes('x') se tiver x no array retorna true
+
+  // } else {
+  //   if (typeof ArryaNum[ArryaNum.indexOf("x") + 1] == "number") {
+  //     ArraySoma.push(Number(ArryaNum[ArryaNum.indexOf("x") + 1]));
+  //   };
+  //   Multi();
+  // };
+};
+
+function Divisao(index) {
+  let counter = ArrayDivisao[0];
+  for (let i = 1; i < ArrayDivisao.length; i++) {
+    counter /= ArrayDivisao[i];
+  };
+  // if (IndexArrayNum == 1) {
+    ArryaNum.splice(index - 1, 2);
+    ArryaNum[index - 1] = counter;
+    ArrayDivisao.length = 0;
+  // } else {
+  //   ArryaNum.splice(IndexArrayNum - 1, 2);
+  //   ArryaNum[IndexArrayNum - 1] = counter;
+  //   ArrayMulti.length = 0;
+  // };
 };
 
 function LogicaMulti(index) {
