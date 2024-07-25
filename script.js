@@ -40,7 +40,7 @@ function btn_parentesis() {
 function btn_porcentagem() {
   if (array.length > 0 && typeof array[array.length - 1] === "number") {
     array.push("%");
-  }else if (array[array.length - 1] !== ".") {
+  }else if (typeof array[array.length - 1] === "string") {
     array[array.length - 1] = '%';
   };
   
@@ -50,7 +50,7 @@ function btn_porcentagem() {
 function btn_divisao() {
   if (array.length > 0 && typeof array[array.length - 1] === "number") {
     array.push("÷");
-  }else if (array[array.length - 1] !== ".") {
+  }else if (typeof array[array.length - 1] === "string") {
     array[array.length - 1] = '÷';
   };
 
@@ -60,7 +60,7 @@ function btn_divisao() {
 function btn_multiplicacao() {
   if ((array.length > 0 && typeof array[array.length - 1] === "number") || array[array.length - 1] === "%") {
     array.push("x");
-  }else if (array[array.length - 1] !== ".") {
+  }else if (typeof array[array.length - 1] === "string") {
     array[array.length - 1] = 'x';
   };
 
@@ -70,7 +70,7 @@ function btn_multiplicacao() {
 function btn_subtracao() {
   if (array.length > 0 && typeof array[array.length - 1] === "number") {
     array.push("-");
-  }else if (array[array.length - 1] !== ".") {
+  }else if (typeof array[array.length - 1] === "string") {
     array[array.length - 1] = '-';
   };
 
@@ -80,7 +80,7 @@ function btn_subtracao() {
 function btn_soma() {
   if (array.length > 0 && typeof array[array.length - 1] === "number") {
     array.push("+");
-  }else if (array[array.length - 1] !== ".") {
+  }else if (typeof array[array.length - 1] === "string") {
     array[array.length - 1] = '+';
   };
   percorreArray();
@@ -89,6 +89,8 @@ function btn_soma() {
 function btn_ponto() {
   if (array.length > 0 && typeof array[array.length - 1] === "number") {
     array.push(".");
+  }else if (typeof array[array.length - 1] === "string") {
+    array[array.length - 1] = '.';
   };
   percorreArray();
 };
@@ -341,3 +343,5 @@ function Subtracao() {
   ArryaNum[0] = counter;
   ArraySubtracao.length = 0;
 };
+
+// ta colocando mais de um caractere por vez - testa colocar mais de um simbulo
