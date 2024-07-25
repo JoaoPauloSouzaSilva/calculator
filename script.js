@@ -58,10 +58,10 @@ function btn_divisao() {
 };
 
 function btn_multiplicacao() {
-  if (array.length > 0 || typeof array[array.length - 1] === "number" || array[array.length - 1] === "%") {
+  if ((array.length > 0 && typeof array[array.length - 1] === "number") || array[array.length - 1] === "%") {
     array.push("x");
   }else if (array[array.length - 1] !== ".") {
-    array[array.length - 1] = '-';
+    array[array.length - 1] = 'x';
   };
 
   percorreArray();
@@ -341,5 +341,3 @@ function Subtracao() {
   ArryaNum[0] = counter;
   ArraySubtracao.length = 0;
 };
-
-// ta colocando mais de um caractere por vez - testa colocar mais de um simbulo
