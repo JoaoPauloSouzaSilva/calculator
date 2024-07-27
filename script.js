@@ -1,5 +1,5 @@
 var count;
-var parenteseIs = true;
+var parenteseIs = 'open';
 var num = "";
 
 var array = [];
@@ -26,14 +26,32 @@ function btn_AC() {
   txt_result.innerHTML = "";
 };
 
+
+var NumParentese = 0;
 function btn_parentesis() {
-  if (parenteseIs) {
+
+  if (array.length == 0) {
     array.push("(");
-    parenteseIs = false;
-  } else {
+    NumParentese += 1;
+  } else if (parenteseIs == 'open' && typeof array[array.length - 1] === "string") {
+    array.push("(");
+    NumParentese += 1;
+  }else if (typeof array[array.length - 1] !== "string") {
     array.push(")");
-    parenteseIs = true;
+    NumParentese--;
+    parenteseIs = 'close';
+  }else if (parenteseIs == 'close') {
+    if (NumParentese != 0) {    
+      array.push(")");
+      NumParentese--;
+    }else{
+      array.push('x');
+      array.push("(");
+      NumParentese += 1;
+      parenteseIs = 'open';
+    };
   };
+
   percorreArray();
 };
 
