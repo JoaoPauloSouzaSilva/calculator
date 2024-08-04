@@ -2,6 +2,8 @@ var count;
 var parenteseIs = "open";
 var num = "";
 var NumParentese = 0;
+var InitParentese = "";
+var EndParentese;
 
 var array = [];
 var ArryaNum = [];
@@ -224,26 +226,53 @@ function IterarArrayNum() {
   }
 
   // ( )
-  let FristParentese;
-  let SecondParentese;
+
   for (let i = 0; i < ArryaNum.length; i++) {
     if (ArryaNum[i] == "(") {
-      FristParentese = i + 1;
-      console.log(FristParentese);
+      InitParentese = i;
+    }
+  }
 
-      for (let x = i; x < ArryaNum.length; x++) {
-        if (ArryaNum[x] == ")") {
-          SecondParentese = x - 1;
-          console.log(SecondParentese);
+  if (InitParentese !== "") {
+    for (let x = InitParentese; x < ArryaNum.length; x++) {
+      if (ArryaNum[x] == ")") {
+        EndParentese = x;
+      }
+    }
+
+    for (var j = InitParentese + 1; j <= EndParentese - 1; j++) {
+      ArrayParentese.push(ArryaNum[j]);
+    }
+
+    ArryaNum.splice(InitParentese, EndParentese - InitParentese);
+    console.log(ArrayParentese);
+
+    //Equação ArrayParentese
+    for (
+      let indexArrayParentese = 0;
+      indexArrayParentese < ArrayParentese.length;
+      indexArrayParentese++
+    ) {
+      if (typeof ArrayParentese[indexArrayParentese] === "string") {
+        if (
+          ArrayParentese[indexArrayParentese] == "x" ||
+          ArrayParentese[indexArrayParentese] == "÷" ||
+          ArrayParentese[indexArrayParentese] == "%"
+        ) {
+          PrimeiraPrecedencia(ArrayParentese);
+        } else if (
+          ArrayParentese[indexArrayParentese] == "+" ||
+          ArrayParentese[indexArrayParentese] == "-"
+        ) {
+          SegundaPrecedencia(ArrayParentese);
         }
       }
-
-      for (var j = FristParentese; j <= SecondParentese; j++) {
-        console.log(ArryaNum[j]);
-        ArrayParentese.push(ArryaNum[j]);
-      }
-      console.log(ArrayParentese);
     }
+    console.log(ArrayParentese);
+    console.log(ArryaNum);
+    ArryaNum[InitParentese] = ArrayParentese[0];
+    ArrayParentese.length = 0;
+    console.log(ArryaNum);
   }
 
   //   PrimeiraPrecedencia();
@@ -256,35 +285,35 @@ function IterarArrayNum() {
 
   // ArryaNum.splice(0, 2);
 
-  PrimeiraPrecedencia();
+  PrimeiraPrecedencia(ArryaNum);
 
-  SegundaPrecedencia();
+  SegundaPrecedencia(ArryaNum);
 
   ArryaNum.length = 0;
 }
 
-function PrimeiraPrecedencia() {
-  for (let i = 0; i <= ArryaNum.length; i++) {
-    if (ArryaNum[i] == "x") {
+function PrimeiraPrecedencia(Array) {
+  for (let i = 0; i <= Array.length; i++) {
+    if (Array[i] == "x") {
       LogicaMulti(i);
-    } else if (ArryaNum[i] == "÷") {
+    } else if (Array[i] == "÷") {
       LogicaDivisao(i);
-    } else if (ArryaNum[i] == "%") {
+    } else if (Array[i] == "%") {
       LogicaPorcentagem(i);
     }
   }
 }
 
-function SegundaPrecedencia() {
-  ArryaNum.forEach(function (value, index) {
+function SegundaPrecedencia(Array) {
+  Array.forEach(function (value, index) {
     if (typeof value === "string") {
       if (value == "+") {
-        LogicaSoma(index);
+        LogicaSoma(index, Array);
       } else if (value == "-") {
         LogicaSubtracao(index);
       } else {
         // por enquanto
-        txt_result.innerHTML = ArryaNum[0];
+        txt_result.innerHTML = Array[0];
         array.length = 0;
         ArraySoma.length = 0;
         ArryaNum.length = 0;
@@ -377,27 +406,27 @@ function Multi(index) {
   ArrayMulti.length = 0;
 }
 
-function LogicaSoma(index) {
-  if (typeof ArryaNum[index - 1] == "number") {
-    ArraySoma.push(Number(ArryaNum[index - 1]));
+function LogicaSoma(index, Array) {
+  if (typeof Array[index - 1] == "number") {
+    ArraySoma.push(Number(Array[index - 1]));
   }
 
-  if (typeof ArryaNum[index + 1] == "number") {
-    ArraySoma.push(Number(ArryaNum[index + 1]));
+  if (typeof Array[index + 1] == "number") {
+    ArraySoma.push(Number(Array[index + 1]));
   }
 
-  Soma();
+  Soma(Array);
   IterarArrayNum();
 }
 
-function Soma() {
+function Soma(Array) {
   let counter = ArraySoma[0];
   for (let i = 1; i < ArraySoma.length; i++) {
     counter += ArraySoma[i];
   }
 
-  ArryaNum.splice(0, 2);
-  ArryaNum[0] = counter;
+  Array.splice(0, 2);
+  Array[0] = counter;
   ArraySoma.length = 0;
 }
 
