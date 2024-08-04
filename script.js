@@ -225,8 +225,16 @@ function IterarArrayNum() {
     }
   }
 
-  // ( )
+  Parentese();
 
+  PrimeiraPrecedencia(ArryaNum);
+
+  SegundaPrecedencia(ArryaNum);
+
+  ArryaNum.length = 0;
+}
+
+function Parentese() {
   for (let i = 0; i < ArryaNum.length; i++) {
     if (ArryaNum[i] == "(") {
       InitParentese = i;
@@ -247,59 +255,46 @@ function IterarArrayNum() {
     ArryaNum.splice(InitParentese, EndParentese - InitParentese);
     console.log(ArrayParentese);
 
-    //Equação ArrayParentese
-    for (
-      let indexArrayParentese = 0;
-      indexArrayParentese < ArrayParentese.length;
-      indexArrayParentese++
-    ) {
-      if (typeof ArrayParentese[indexArrayParentese] === "string") {
-        if (
-          ArrayParentese[indexArrayParentese] == "x" ||
-          ArrayParentese[indexArrayParentese] == "÷" ||
-          ArrayParentese[indexArrayParentese] == "%"
-        ) {
-          PrimeiraPrecedencia(ArrayParentese);
-        } else if (
-          ArrayParentese[indexArrayParentese] == "+" ||
-          ArrayParentese[indexArrayParentese] == "-"
-        ) {
-          SegundaPrecedencia(ArrayParentese);
-        }
+    EquacaoParentese();
+  }
+}
+
+function EquacaoParentese() {
+  for (
+    let indexArrayParentese = 0;
+    indexArrayParentese < ArrayParentese.length;
+    indexArrayParentese++
+  ) {
+    if (typeof ArrayParentese[indexArrayParentese] === "string") {
+      if (
+        ArrayParentese[indexArrayParentese] == "x" ||
+        ArrayParentese[indexArrayParentese] == "÷" ||
+        ArrayParentese[indexArrayParentese] == "%"
+      ) {
+        PrimeiraPrecedencia(ArrayParentese);
+      } else if (
+        ArrayParentese[indexArrayParentese] == "+" ||
+        ArrayParentese[indexArrayParentese] == "-"
+      ) {
+        SegundaPrecedencia(ArrayParentese);
       }
     }
-    console.log(ArrayParentese);
-    console.log(ArryaNum);
-    ArryaNum[InitParentese] = ArrayParentese[0];
-    ArrayParentese.length = 0;
-    console.log(ArryaNum);
   }
-
-  //   PrimeiraPrecedencia();
-  //   SegundaPrecedencia();
-  //   FristParentese = i;
-  //  } else if (ArryaNum[i] == ')') {
-  //   SecondParentese = i;
-  //  };
-  // };
-
-  // ArryaNum.splice(0, 2);
-
-  PrimeiraPrecedencia(ArryaNum);
-
-  SegundaPrecedencia(ArryaNum);
-
-  ArryaNum.length = 0;
+  console.log(ArrayParentese);
+  console.log(ArryaNum);
+  ArryaNum[InitParentese] = ArrayParentese[0];
+  ArrayParentese.length = 0;
+  console.log(ArryaNum);
 }
 
 function PrimeiraPrecedencia(Array) {
   for (let i = 0; i <= Array.length; i++) {
     if (Array[i] == "x") {
-      LogicaMulti(i);
+      LogicaMulti(i, Array);
     } else if (Array[i] == "÷") {
-      LogicaDivisao(i);
+      LogicaDivisao(i, Array);
     } else if (Array[i] == "%") {
-      LogicaPorcentagem(i);
+      LogicaPorcentagem(i, Array);
     }
   }
 }
@@ -310,7 +305,7 @@ function SegundaPrecedencia(Array) {
       if (value == "+") {
         LogicaSoma(index, Array);
       } else if (value == "-") {
-        LogicaSubtracao(index);
+        LogicaSubtracao(index, Array);
       } else {
         // por enquanto
         txt_result.innerHTML = Array[0];
@@ -337,72 +332,72 @@ function UniNumeros(index) {
   IterarArrayNum();
 }
 
-function LogicaPorcentagem(index) {
-  if (typeof ArryaNum[index - 1] == "number") {
-    ArrayPorcentagem.push(Number(ArryaNum[index - 1]));
+function LogicaPorcentagem(index, Array) {
+  if (typeof Array[index - 1] == "number") {
+    ArrayPorcentagem.push(Number(Array[index - 1]));
   }
 
-  if (typeof ArryaNum[index + 1] == "number") {
-    ArrayPorcentagem.push(Number(ArryaNum[index + 1]));
+  if (typeof Array[index + 1] == "number") {
+    ArrayPorcentagem.push(Number(Array[index + 1]));
   }
 
   Porcentagem(index);
   IterarArrayNum();
 }
 
-function Porcentagem(index) {
+function Porcentagem(index, Array) {
   let counter = ArrayPorcentagem[0];
   counter /= 100;
-  ArryaNum.splice(index - 1, 2);
-  ArryaNum[index - 1] = counter;
+  Array.splice(index - 1, 2);
+  Array[index - 1] = counter;
   ArrayPorcentagem.length = 0;
 }
 
-function LogicaDivisao(index) {
-  if (typeof ArryaNum[index - 1] == "number") {
-    ArrayDivisao.push(Number(ArryaNum[index - 1]));
+function LogicaDivisao(index, Array) {
+  if (typeof Array[index - 1] == "number") {
+    ArrayDivisao.push(Number(Array[index - 1]));
   }
 
-  if (typeof ArryaNum[index + 1] == "number") {
-    ArrayDivisao.push(Number(ArryaNum[index + 1]));
+  if (typeof Array[index + 1] == "number") {
+    ArrayDivisao.push(Number(Array[index + 1]));
   }
 
   Divisao(index);
   IterarArrayNum();
 }
 
-function Divisao(index) {
+function Divisao(index, Array) {
   let counter = ArrayDivisao[0];
   for (let i = 1; i < ArrayDivisao.length; i++) {
     counter /= ArrayDivisao[i];
   }
 
-  ArryaNum.splice(index - 1, 2);
-  ArryaNum[index - 1] = counter;
+  Array.splice(index - 1, 2);
+  Array[index - 1] = counter;
   ArrayDivisao.length = 0;
 }
 
-function LogicaMulti(index) {
-  if (typeof ArryaNum[index - 1] == "number") {
-    ArrayMulti.push(Number(ArryaNum[index - 1]));
+function LogicaMulti(index, Array) {
+  if (typeof Array[index - 1] == "number") {
+    ArrayMulti.push(Number(Array[index - 1]));
   }
 
-  if (typeof ArryaNum[index + 1] == "number") {
-    ArrayMulti.push(Number(ArryaNum[index + 1]));
+  if (typeof Array[index + 1] == "number") {
+    ArrayMulti.push(Number(Array[index + 1]));
   }
 
-  Multi(index);
+  Multi(index, Array);
   IterarArrayNum();
 }
 
-function Multi(index) {
+function Multi(index, Array) {
   let counter = ArrayMulti[0];
   for (let i = 1; i < ArrayMulti.length; i++) {
     counter *= ArrayMulti[i];
   }
 
-  ArryaNum.splice(index - 1, 2);
-  ArryaNum[index - 1] = counter;
+  Array.splice(index - 1, 2);
+  Array[index - 1] = counter;
   ArrayMulti.length = 0;
 }
 
@@ -430,28 +425,28 @@ function Soma(Array) {
   ArraySoma.length = 0;
 }
 
-function LogicaSubtracao(index) {
-  if (typeof ArryaNum[index - 1] == "number") {
-    ArraySubtracao.push(Number(ArryaNum[index - 1]));
+function LogicaSubtracao(index, Array) {
+  if (typeof Array[index - 1] == "number") {
+    ArraySubtracao.push(Number(Array[index - 1]));
   }
 
-  if (typeof ArryaNum[index + 1] == "number") {
-    ArraySubtracao.push(Number(ArryaNum[index + 1]));
+  if (typeof Array[index + 1] == "number") {
+    ArraySubtracao.push(Number(Array[index + 1]));
   }
 
-  Subtracao();
+  Subtracao(Array);
   IterarArrayNum();
 }
 
-function Subtracao() {
+function Subtracao(Array) {
   let counter = ArraySubtracao[0];
   for (let i = 1; i < ArraySubtracao.length; i++) {
     counter -= ArraySubtracao[i];
   }
 
-  ArryaNum.splice(0, 2);
-  ArryaNum[0] = counter;
+  Array.splice(0, 2);
+  Array[0] = counter;
   ArraySubtracao.length = 0;
 }
 
-// ta colocando mais de um caractere por vez - testa colocar mais de um simbulo
+
