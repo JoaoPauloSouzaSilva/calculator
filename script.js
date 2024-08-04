@@ -17,7 +17,7 @@ var ArrayParentese = [];
 var txt_num = document.getElementById("count");
 var txt_result = document.getElementById("result");
 
-function btn_AC() {
+function ArrayCleaner() {
   array.length = 0;
   ArraySoma.length = 0;
   ArryaNum.length = 0;
@@ -26,7 +26,10 @@ function btn_AC() {
   ArrayDivisao.length = 0;
   ArrayPorcentagem.length = 0;
   ArrayParentese.length = 0;
+}
 
+function btn_AC() {
+  ArrayCleaner();
   txt_num.innerHTML = "";
   txt_result.innerHTML = "";
   NumParentese = 0;
@@ -307,16 +310,9 @@ function SegundaPrecedencia(Array) {
       } else if (value == "-") {
         LogicaSubtracao(index, Array);
       } else {
-        // por enquanto
+        // por enquanto (mas funciona)
         txt_result.innerHTML = Array[0];
-        array.length = 0;
-        ArraySoma.length = 0;
-        ArryaNum.length = 0;
-        ArraySubtracao.length = 0;
-        ArrayMulti.length = 0;
-        ArrayDivisao.length = 0;
-        ArrayPorcentagem.length = 0;
-        ArrayParentese.length = 0;
+        ArrayCleaner();
       }
     }
   });
@@ -448,5 +444,4 @@ function Subtracao(Array) {
   Array[0] = counter;
   ArraySubtracao.length = 0;
 }
-
 
