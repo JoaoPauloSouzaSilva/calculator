@@ -290,28 +290,28 @@ function EquacaoParentese() {
   console.log(ArryaNum);
 }
 
-function PrimeiraPrecedencia(Array) {
-  for (let i = 0; i <= Array.length; i++) {
-    if (Array[i] == "x") {
-      LogicaMulti(i, Array);
-    } else if (Array[i] == "÷") {
-      LogicaDivisao(i, Array);
-    } else if (Array[i] == "%") {
-      LogicaPorcentagem(i, Array);
+function PrimeiraPrecedencia(array) {
+  for (let i = 0; i <= array.length; i++) {
+    if (array[i] == "x") {
+      LogicaMulti(i, array);
+    } else if (array[i] == "÷") {
+      LogicaDivisao(i, array);
+    } else if (array[i] == "%") {
+      LogicaPorcentagem(i, array);
     }
   }
 }
 
-function SegundaPrecedencia(Array) {
-  Array.forEach(function (value, index) {
+function SegundaPrecedencia(array) {
+  array.forEach(function (value, index) {
     if (typeof value === "string") {
       if (value == "+") {
-        LogicaSoma(index, Array);
+        LogicaSoma(index, array);
       } else if (value == "-") {
-        LogicaSubtracao(index, Array);
+        LogicaSubtracao(index, array);
       } else {
         // por enquanto (mas funciona)
-        txt_result.innerHTML = Array[0];
+        txt_result.innerHTML = array[0];
         ArrayCleaner();
       }
     }
@@ -328,120 +328,120 @@ function UniNumeros(index) {
   IterarArrayNum();
 }
 
-function LogicaPorcentagem(index, Array) {
-  if (typeof Array[index - 1] == "number") {
-    ArrayPorcentagem.push(Number(Array[index - 1]));
+function LogicaPorcentagem(index, array) {
+  if (typeof array[index - 1] == "number") {
+    ArrayPorcentagem.push(Number(array[index - 1]));
   }
 
-  if (typeof Array[index + 1] == "number") {
-    ArrayPorcentagem.push(Number(Array[index + 1]));
+  if (typeof array[index + 1] == "number") {
+    ArrayPorcentagem.push(Number(array[index + 1]));
   }
 
-  Porcentagem(index);
+  Porcentagem(index, array);
   IterarArrayNum();
 }
 
-function Porcentagem(index, Array) {
+function Porcentagem(index, array) {
   let counter = ArrayPorcentagem[0];
   counter /= 100;
-  Array.splice(index - 1, 2);
-  Array[index - 1] = counter;
+  array.splice(index - 1, 2);
+  array[index - 1] = counter;
   ArrayPorcentagem.length = 0;
 }
 
-function LogicaDivisao(index, Array) {
-  if (typeof Array[index - 1] == "number") {
-    ArrayDivisao.push(Number(Array[index - 1]));
+function LogicaDivisao(index, array) {
+  if (typeof array[index - 1] == "number") {
+    ArrayDivisao.push(Number(array[index - 1]));
   }
 
-  if (typeof Array[index + 1] == "number") {
-    ArrayDivisao.push(Number(Array[index + 1]));
+  if (typeof array[index + 1] == "number") {
+    ArrayDivisao.push(Number(array[index + 1]));
   }
 
-  Divisao(index);
+  Divisao(index, array);
   IterarArrayNum();
 }
 
-function Divisao(index, Array) {
+function Divisao(index, array) {
   let counter = ArrayDivisao[0];
   for (let i = 1; i < ArrayDivisao.length; i++) {
     counter /= ArrayDivisao[i];
   }
 
-  Array.splice(index - 1, 2);
-  Array[index - 1] = counter;
+  array.splice(index - 1, 2);
+  array[index - 1] = counter;
   ArrayDivisao.length = 0;
 }
 
-function LogicaMulti(index, Array) {
-  if (typeof Array[index - 1] == "number") {
-    ArrayMulti.push(Number(Array[index - 1]));
+function LogicaMulti(index, array) {
+  if (typeof array[index - 1] == "number") {
+    ArrayMulti.push(Number(array[index - 1]));
   }
 
-  if (typeof Array[index + 1] == "number") {
-    ArrayMulti.push(Number(Array[index + 1]));
+  if (typeof array[index + 1] == "number") {
+    ArrayMulti.push(Number(array[index + 1]));
   }
 
-  Multi(index, Array);
+  Multi(index, array);
   IterarArrayNum();
 }
 
-function Multi(index, Array) {
+function Multi(index, array) {
   let counter = ArrayMulti[0];
   for (let i = 1; i < ArrayMulti.length; i++) {
     counter *= ArrayMulti[i];
   }
 
-  Array.splice(index - 1, 2);
-  Array[index - 1] = counter;
+  array.splice(index - 1, 2);
+  array[index - 1] = counter;
   ArrayMulti.length = 0;
 }
 
-function LogicaSoma(index, Array) {
-  if (typeof Array[index - 1] == "number") {
-    ArraySoma.push(Number(Array[index - 1]));
+function LogicaSoma(index, array) {
+  if (typeof array[index - 1] == "number") {
+    ArraySoma.push(Number(array[index - 1]));
   }
 
-  if (typeof Array[index + 1] == "number") {
-    ArraySoma.push(Number(Array[index + 1]));
+  if (typeof array[index + 1] == "number") {
+    ArraySoma.push(Number(array[index + 1]));
   }
 
-  Soma(Array);
+  Soma(array);
   IterarArrayNum();
 }
 
-function Soma(Array) {
+function Soma(array) {
   let counter = ArraySoma[0];
   for (let i = 1; i < ArraySoma.length; i++) {
     counter += ArraySoma[i];
   }
 
-  Array.splice(0, 2);
-  Array[0] = counter;
+  array.splice(0, 2);
+  array[0] = counter;
   ArraySoma.length = 0;
 }
 
-function LogicaSubtracao(index, Array) {
-  if (typeof Array[index - 1] == "number") {
-    ArraySubtracao.push(Number(Array[index - 1]));
+function LogicaSubtracao(index, array) {
+  if (typeof array[index - 1] == "number") {
+    ArraySubtracao.push(Number(array[index - 1]));
   }
 
-  if (typeof Array[index + 1] == "number") {
-    ArraySubtracao.push(Number(Array[index + 1]));
+  if (typeof array[index + 1] == "number") {
+    ArraySubtracao.push(Number(array[index + 1]));
   }
 
-  Subtracao(Array);
+  Subtracao(array);
   IterarArrayNum();
 }
 
-function Subtracao(Array) {
+function Subtracao(array) {
   let counter = ArraySubtracao[0];
   for (let i = 1; i < ArraySubtracao.length; i++) {
     counter -= ArraySubtracao[i];
   }
 
-  Array.splice(0, 2);
-  Array[0] = counter;
+  array.splice(0, 2);
+  array[0] = counter;
   ArraySubtracao.length = 0;
 }
 
