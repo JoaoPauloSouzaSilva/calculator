@@ -139,52 +139,83 @@ function btn_ponto() {
 }
 
 function btn_0() {
+  if(array[array.length - 1] == '%'){
+    array.push('x')
+  }
   array.push(0);
   percorreArray();
 }
 
 function btn_1() {
+  if(array[array.length - 1] == '%'){
+    array.push('x')
+  }
   array.push(1);
   percorreArray();
 }
 
 function btn_2() {
+  if(array[array.length - 1] == '%'){
+    array.push('x')
+  }
   array.push(2);
   percorreArray();
 }
 
 function btn_3() {
+  if(array[array.length - 1] == '%'){
+    array.push('x')
+  }
   array.push(3);
   percorreArray();
 }
 
 function btn_4() {
+  if(array[array.length - 1] == '%'){
+    array.push('x')
+  }
   array.push(4);
   percorreArray();
 }
 
 function btn_5() {
+  if(array[array.length - 1] == '%'){
+    array.push('x')
+  }
   array.push(5);
   percorreArray();
 }
 
 function btn_6() {
+  if(array[array.length - 1] == '%'){
+    array.push('x')
+  }
   array.push(6);
   percorreArray();
 }
 
 function btn_7() {
+  if(array[array.length - 1] == '%'){
+    array.push('x')
+  }
   array.push(7);
   percorreArray();
 }
 
 function btn_8() {
+  if(array[array.length - 1] == '%'){
+    array.push('x')
+  }
   array.push(8);
   percorreArray();
 }
 
 function btn_9() {
+  if(array[array.length - 1] == '%'){
+    array.push('x')
+  }
   array.push(9);
+  console.log(array);
   percorreArray();
 }
 
@@ -292,12 +323,12 @@ function EquacaoParentese() {
 
 function PrimeiraPrecedencia(array) {
   for (let i = 0; i <= array.length; i++) {
-    if (array[i] == "x") {
-      LogicaMulti(i, array);
+    if (array[i] == "%") {
+      LogicaPorcentagem(i, array);
     } else if (array[i] == "÷") {
       LogicaDivisao(i, array);
-    } else if (array[i] == "%") {    
-      LogicaPorcentagem(i, array);
+    } else if (array[i] == "x") {    
+      LogicaMulti(i, array);
     }
   }
 }
