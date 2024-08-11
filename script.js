@@ -296,7 +296,7 @@ function PrimeiraPrecedencia(array) {
       LogicaMulti(i, array);
     } else if (array[i] == "÷") {
       LogicaDivisao(i, array);
-    } else if (array[i] == "%") {
+    } else if (array[i] == "%") {    
       LogicaPorcentagem(i, array);
     }
   }
@@ -329,22 +329,29 @@ function UniNumeros(index) {
 }
 
 function LogicaPorcentagem(index, array) {
+
+  let verificacao = false;
   if (typeof array[index - 1] == "number") {
     ArrayPorcentagem.push(Number(array[index - 1]));
+    verificacao = true;
   }
 
   if (typeof array[index + 1] == "number") {
     ArrayPorcentagem.push(Number(array[index + 1]));
+    verificacao = true;
   }
 
-  Porcentagem(index, array);
-  IterarArrayNum();
+  if (verificacao) {
+    Porcentagem(index, array);
+    IterarArrayNum();
+  }
 }
 
 function Porcentagem(index, array) {
   let counter = ArrayPorcentagem[0];
   counter /= 100;
-  array.splice(index - 1, 2);
+  array.splice(index - 1, 1);
+  // se receber {25 % =} de volve {0.25 =}
   array[index - 1] = counter;
   ArrayPorcentagem.length = 0;
 }
