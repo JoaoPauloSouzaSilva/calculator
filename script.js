@@ -359,28 +359,34 @@ function UniNumeros(index) {
   IterarArrayNum();
 }
 
-function LogicaPorcentagem(index, array) {
+// resolver (apenas +)
+// atual -> 1+10-25% = 8.5 ((25% de 10) + 1)
+// deve ser -> 1+10-25% = 8.25 (25% de 11)
 
+function LogicaPorcentagem(index, array) {
   let verificacao = false;
-  if (typeof array[index - 1] == "number") {
+  let divisor = 100;
+// 10 -  25 % = 
+  if (array[index - 2] == "-" || array[index - 2] == "+") {
+    if (typeof array[index - 1] == "number") {
+      ArrayPorcentagem.push(Number(array[index - 1]));
+      verificacao = true;
+    }
+    divisor = array[index - 3];
+  }else if (typeof array[index - 1] == "number") {
     ArrayPorcentagem.push(Number(array[index - 1]));
     verificacao = true;
   }
 
-  if (typeof array[index + 1] == "number") {
-    ArrayPorcentagem.push(Number(array[index + 1]));
-    verificacao = true;
-  }
-
   if (verificacao) {
-    Porcentagem(index, array);
+    Porcentagem(index, array, divisor);
     IterarArrayNum();
   }
 }
 
-function Porcentagem(index, array) {
+function Porcentagem(index, array, divisor) {
   let counter = ArrayPorcentagem[0];
-  counter /= 100;
+  counter /= divisor;
   array.splice(index - 1, 1);
   // se receber {25 % =} de volve {0.25 =}
   array[index - 1] = counter;
