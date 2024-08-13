@@ -366,13 +366,27 @@ function UniNumeros(index) {
 function LogicaPorcentagem(index, array) {
   let verificacao = false;
   let divisor = 100;
-// 10 -  25 % = 
+
+// 0 1  2 3  4  5  6  
+// 1 + 10 -  25 % = 
   if (array[index - 2] == "-" || array[index - 2] == "+") {
+    
+    if (typeof array[index-4] === "string") {
+      if (array[index-4] == '+') {
+        LogicaSoma(index-4, array);
+      } else if (array[index-4] == '-') {
+        LogicaSubtracao(index-4, array);
+      }
+    }
+
+
+
     if (typeof array[index - 1] == "number") {
       ArrayPorcentagem.push(Number(array[index - 1]));
       verificacao = true;
     }
     divisor = array[index - 3];
+
   }else if (typeof array[index - 1] == "number") {
     ArrayPorcentagem.push(Number(array[index - 1]));
     verificacao = true;
@@ -386,7 +400,12 @@ function LogicaPorcentagem(index, array) {
 
 function Porcentagem(index, array, divisor) {
   let counter = ArrayPorcentagem[0];
-  counter /= divisor;
+  if (divisor == 100) {
+    counter /= divisor;  
+  } else {
+    counter = (counter/100)*divisor;
+  }
+  
   array.splice(index - 1, 1);
   // se receber {25 % =} de volve {0.25 =}
   array[index - 1] = counter;
