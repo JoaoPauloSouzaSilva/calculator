@@ -139,80 +139,80 @@ function btn_ponto() {
 }
 
 function btn_0() {
-  if(array[array.length - 1] == '%'){
-    array.push('x')
+  if (array[array.length - 1] == "%") {
+    array.push("x");
   }
   array.push(0);
   percorreArray();
 }
 
 function btn_1() {
-  if(array[array.length - 1] == '%'){
-    array.push('x')
+  if (array[array.length - 1] == "%") {
+    array.push("x");
   }
   array.push(1);
   percorreArray();
 }
 
 function btn_2() {
-  if(array[array.length - 1] == '%'){
-    array.push('x')
+  if (array[array.length - 1] == "%") {
+    array.push("x");
   }
   array.push(2);
   percorreArray();
 }
 
 function btn_3() {
-  if(array[array.length - 1] == '%'){
-    array.push('x')
+  if (array[array.length - 1] == "%") {
+    array.push("x");
   }
   array.push(3);
   percorreArray();
 }
 
 function btn_4() {
-  if(array[array.length - 1] == '%'){
-    array.push('x')
+  if (array[array.length - 1] == "%") {
+    array.push("x");
   }
   array.push(4);
   percorreArray();
 }
 
 function btn_5() {
-  if(array[array.length - 1] == '%'){
-    array.push('x')
+  if (array[array.length - 1] == "%") {
+    array.push("x");
   }
   array.push(5);
   percorreArray();
 }
 
 function btn_6() {
-  if(array[array.length - 1] == '%'){
-    array.push('x')
+  if (array[array.length - 1] == "%") {
+    array.push("x");
   }
   array.push(6);
   percorreArray();
 }
 
 function btn_7() {
-  if(array[array.length - 1] == '%'){
-    array.push('x')
+  if (array[array.length - 1] == "%") {
+    array.push("x");
   }
   array.push(7);
   percorreArray();
 }
 
 function btn_8() {
-  if(array[array.length - 1] == '%'){
-    array.push('x')
+  if (array[array.length - 1] == "%") {
+    array.push("x");
   }
   array.push(8);
   percorreArray();
 }
 
 function btn_9() {
-  if(array[array.length - 1] == '%'){
-    array.push('x')
+  if (array[array.length - 1] == "%") {
+    array.push("x");
   }
   array.push(9);
   console.log(array);
@@ -327,7 +327,7 @@ function PrimeiraPrecedencia(array) {
       LogicaPorcentagem(i, array);
     } else if (array[i] == "÷") {
       LogicaDivisao(i, array);
-    } else if (array[i] == "x") {    
+    } else if (array[i] == "x") {
       LogicaMulti(i, array);
     }
   }
@@ -367,27 +367,25 @@ function LogicaPorcentagem(index, array) {
   let verificacao = false;
   let divisor = 100;
 
-// 0 1  2 3  4  5  6  
-// 1 + 10 -  25 % = 
+  // 0 1  2 3  4  5  6
+  // 1 + 10 -  25 % =
   if (array[index - 2] == "-" || array[index - 2] == "+") {
-    
-    if (typeof array[index-4] === "string") {
-      if (array[index-4] == '+') {
-        LogicaSoma(index-4, array);
-      } else if (array[index-4] == '-') {
-        LogicaSubtracao(index-4, array);
+    if (typeof array[index - 4] === "string") {
+      if (array[index - 4] == "+") {
+        LogicaSoma(index - 4, array);
+      } else if (array[index - 4] == "-") {
+        LogicaSubtracao(index - 4, array);
       }
     }
 
-
+    console.log(array);
 
     if (typeof array[index - 1] == "number") {
       ArrayPorcentagem.push(Number(array[index - 1]));
       verificacao = true;
     }
     divisor = array[index - 3];
-
-  }else if (typeof array[index - 1] == "number") {
+  } else if (typeof array[index - 1] == "number") {
     ArrayPorcentagem.push(Number(array[index - 1]));
     verificacao = true;
   }
@@ -401,11 +399,11 @@ function LogicaPorcentagem(index, array) {
 function Porcentagem(index, array, divisor) {
   let counter = ArrayPorcentagem[0];
   if (divisor == 100) {
-    counter /= divisor;  
+    counter /= divisor;
   } else {
-    counter = (counter/100)*divisor;
+    counter = (counter / 100) * divisor;
   }
-  
+
   array.splice(index - 1, 1);
   // se receber {25 % =} de volve {0.25 =}
   array[index - 1] = counter;
@@ -507,4 +505,3 @@ function Subtracao(array) {
   array[0] = counter;
   ArraySubtracao.length = 0;
 }
-
